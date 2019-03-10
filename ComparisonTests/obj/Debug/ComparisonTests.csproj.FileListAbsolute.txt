@@ -1,0 +1,17 @@
+C:\Users\LilTiger\source\repos\Comparison\ComparisonTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+C:\Users\LilTiger\source\repos\Comparison\ComparisonTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+C:\Users\LilTiger\source\repos\Comparison\ComparisonTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+C:\Users\LilTiger\source\repos\Comparison\ComparisonTests\bin\Debug\ComparisonTests.dll
+C:\Users\LilTiger\source\repos\Comparison\ComparisonTests\bin\Debug\ComparisonTests.pdb
+C:\Users\LilTiger\source\repos\Comparison\ComparisonTests\bin\Debug\Comparison.exe
+C:\Users\LilTiger\source\repos\Comparison\ComparisonTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.dll
+C:\Users\LilTiger\source\repos\Comparison\ComparisonTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll
+C:\Users\LilTiger\source\repos\Comparison\ComparisonTests\bin\Debug\Comparison.pdb
+C:\Users\LilTiger\source\repos\Comparison\ComparisonTests\bin\Debug\Comparison.exe.config
+C:\Users\LilTiger\source\repos\Comparison\ComparisonTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.xml
+C:\Users\LilTiger\source\repos\Comparison\ComparisonTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml
+C:\Users\LilTiger\source\repos\Comparison\ComparisonTests\obj\Debug\ComparisonTests.csprojAssemblyReference.cache
+C:\Users\LilTiger\source\repos\Comparison\ComparisonTests\obj\Debug\ComparisonTests.csproj.CoreCompileInputs.cache
+C:\Users\LilTiger\source\repos\Comparison\ComparisonTests\obj\Debug\ComparisonTests.csproj.CopyComplete
+C:\Users\LilTiger\source\repos\Comparison\ComparisonTests\obj\Debug\ComparisonTests.dll
+C:\Users\LilTiger\source\repos\Comparison\ComparisonTests\obj\Debug\ComparisonTests.pdb

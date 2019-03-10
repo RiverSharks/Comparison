@@ -1,20 +1,25 @@
-﻿
+﻿using System.Text;
+using System.IO;
+using System;
 
 namespace Comparison
 {
-    class DiffClass
+    
+    public class DiffClass
     {
-        TextsWithCheck text;
+        private static Exception ExistException = new Exception("Couldnt find files");
         private readonly string text1;
         private readonly string text2;
-       
+        
         // The Constructor gets arguments of command line and give those to TextsWithCheck constructor
-        public DiffClass(string[] argumentsOfCmd)
+        public DiffClass(string filePath1, string filePath2)
         {
-            //
-            text = new TextsWithCheck(argumentsOfCmd);
-            text1 = text.Text1;
-            text2 = text.Text2;
+                if (File.Exists(filePath1) == false || File.Exists(filePath2) == false)
+                    throw ExistException;                
+                StreamReader readFile1 = new StreamReader(filePath1, Encoding.Default);
+                StreamReader readFile2 = new StreamReader(filePath2, Encoding.Default);
+                text1 = readFile1.ReadToEnd();
+                text2 = readFile2.ReadToEnd();
         }
 
         // Longest common subsequence
@@ -36,7 +41,7 @@ namespace Comparison
         }
         
         // i - lenght of text1; j - length of text2
-        // This method returns a string where lost symbols write inside "()" and exited symbols inside "[]"
+        // This method returns a string where lost symbols write inside "()" and existed symbols inside "[]"
         private string Differences (int[,] matrixOfLCS, string text1, string text2, int i, int j)
         {
             var saverDiff = "";
