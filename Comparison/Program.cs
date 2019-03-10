@@ -1,6 +1,5 @@
 ﻿using Comparison;
 using System;
-using System.IO;
 
 
 namespace FileComparison
@@ -10,16 +9,17 @@ namespace FileComparison
     {
         static void Main(string[] args)
         {
-            try
-            {
+            //try
+            //{
                 DiffClass diff = new DiffClass(args[0], args[1]);
+                diff.SetOnlyStrings("LilPUmP", "dIgpuMp");
                 Console.WriteLine(diff.GetStringOfDiff());
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Error: {ex.Message}");
-            }            
-        }
+            //}
+            //catch (Exception ex)
+            //{
+            //    Console.WriteLine($"Error: {ex.Message}");
+            //}
+}
     }
 
 }

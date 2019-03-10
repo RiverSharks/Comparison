@@ -4,22 +4,30 @@ using System;
 
 namespace Comparison
 {
-    
     public class DiffClass
     {
         private static Exception ExistException = new Exception("Couldnt find files");
-        private readonly string text1;
-        private readonly string text2;
-        
-        // The Constructor gets arguments of command line and give those to TextsWithCheck constructor
+        private string text1;
+        private string text2;
+
+        public DiffClass(){ }
+
+        // The constructor gets paths and check existing of files 
         public DiffClass(string filePath1, string filePath2)
         {
-                if (File.Exists(filePath1) == false || File.Exists(filePath2) == false)
-                    throw ExistException;                
-                StreamReader readFile1 = new StreamReader(filePath1, Encoding.Default);
-                StreamReader readFile2 = new StreamReader(filePath2, Encoding.Default);
-                text1 = readFile1.ReadToEnd();
-                text2 = readFile2.ReadToEnd();
+            if (File.Exists(filePath1) == false || File.Exists(filePath2) == false)
+                throw ExistException;
+            StreamReader readFile1 = new StreamReader(filePath1, Encoding.Default);
+            StreamReader readFile2 = new StreamReader(filePath2, Encoding.Default);
+            text1 = readFile1.ReadToEnd();
+            text2 = readFile2.ReadToEnd();
+        }
+
+        // Set text1 & text2 without wedding with file path
+        public void SetOnlyStrings(string string1, string string2)
+        {
+            text1 = string1;
+            text2 = string2;
         }
 
         // Longest common subsequence
@@ -36,8 +44,8 @@ namespace Comparison
                     else
                         matrixOfLCS[i, j] = matrixOfLCS[i, j - 1];
                 }
+
             return matrixOfLCS;
-            
         }
         
         // i - lenght of text1; j - length of text2
@@ -55,7 +63,7 @@ namespace Comparison
             else if (i > 0 && (j == 0 || (matrixOfLCS[i, j - 1] <= matrixOfLCS[i - 1, j])))
             {
                 saverDiff = Differences(matrixOfLCS, text1, text2, i - 1, j);
-                if (saverDiff[saverDiff.Length - 1] == ')')
+                if (saverDiff.Length != 0 && saverDiff[saverDiff.Length - 1] == ')' )
                     return saverDiff.Trim(')') + text1[i - 1] + ")";
                 else
                     return saverDiff + "(" + text1[i - 1] + ")";
@@ -66,7 +74,7 @@ namespace Comparison
             {
 
                 saverDiff = Differences(matrixOfLCS, text1, text2, i, j - 1);
-                if (saverDiff[saverDiff.Length - 1] == ']')
+                if (saverDiff.Length != 0 && saverDiff[saverDiff.Length - 1] == ']')
                     return saverDiff.Trim(']') + text2[j - 1] + "]";
                 else
                     return saverDiff + "[" + text2[j - 1] + "]";
@@ -81,8 +89,5 @@ namespace Comparison
                 return Differences(LCS(text1, text2), text1, text2, text1.Length, text2.Length);
             else return ""; 
         }
-
-        
-
     }
 }
