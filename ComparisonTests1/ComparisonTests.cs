@@ -10,16 +10,13 @@ namespace ComparisonTests1
         public void Differences_between_fool_fouulish ()
         {
             // arrange
-            string Testword1 = "fool";
-            string Testword2 = "fouulish";
+            string firstTestWord = "fool";
+            string secondTestWord = "fouulish";
             string resultMustBe = "fo[uu](o)l[ish]";
-            DiffClass diff = new DiffClass();
-            diff.Text1 = Testword1;
-            diff.Text2 = Testword2;
-            //diff.SetOnlyStrings(Testword1, Testword2);
+            //diff.SetOnlyStrings(firstTestWord, secondTestWord);
 
             // act
-            string res = diff.GetStringOfDiff();
+            string res = DiffClass.GetStringOfDiff(firstTestWord, secondTestWord);
 
             // assert
             Assert.AreEqual(resultMustBe, res);
@@ -29,15 +26,12 @@ namespace ComparisonTests1
         public void Differences_between_spring_sprugn()
         {
             // arrange
-            string Testword1 = "spring";
-            string Testword2 = "sprugn";
+            string firstTestWord = "spring";
+            string secondTestWord = "sprugn";
             string resultMustBe = "spr[ug](i)n(g)";
-            DiffClass diff = new DiffClass();
-            diff.Text1 = Testword1;
-            diff.Text2 = Testword2;
 
             // act
-            string res = diff.GetStringOfDiff();
+            string res = DiffClass.GetStringOfDiff(firstTestWord, secondTestWord);
 
             // assert
             Assert.AreEqual(resultMustBe, res);
@@ -47,15 +41,12 @@ namespace ComparisonTests1
         public void Differences_between_selete_delete()
         {
             // arrange
-            string Testword1 = "selete";
-            string Testword2 = "delete";
+            string firstTestWord = "selete";
+            string secondTestWord = "delete";
             string resultMustBe = "[d](s)elete";
-            DiffClass diff = new DiffClass();
-            diff.Text1 = Testword1;
-            diff.Text2 = Testword2;
 
             // act
-            string res = diff.GetStringOfDiff();
+            string res = DiffClass.GetStringOfDiff(firstTestWord, secondTestWord);
 
             // assert
             Assert.AreEqual(resultMustBe, res);
@@ -65,15 +56,12 @@ namespace ComparisonTests1
         public void Differences_between_lil_bil()
         {
             // arrange
-            string Testword1 = "lil";
-            string Testword2 = "bil";
+            string firstTestWord = "lil";
+            string secondTestWord = "bil";
             string resultMustBe = "[b](l)il";
-            DiffClass diff = new DiffClass();
-            diff.Text1 = Testword1;
-            diff.Text2 = Testword2;
 
             // act
-            string res = diff.GetStringOfDiff();
+            string res = DiffClass.GetStringOfDiff(firstTestWord, secondTestWord);
 
             // assert
             Assert.AreEqual(resultMustBe, res);
@@ -83,15 +71,12 @@ namespace ComparisonTests1
         public void Differences_between_been_oheen()
         {
             // arrange
-            string Testword1 = "been";
-            string Testword2 = "oheen";
+            string firstTestWord = "been";
+            string secondTestWord = "oheen";
             string resultMustBe = "[oh](b)een";
-            DiffClass diff = new DiffClass();
-            diff.Text1 = Testword1;
-            diff.Text2 = Testword2;
 
             // act
-            string res = diff.GetStringOfDiff();
+            string res = DiffClass.GetStringOfDiff(firstTestWord, secondTestWord);
 
             // assert
             Assert.AreEqual(resultMustBe, res);
@@ -101,15 +86,13 @@ namespace ComparisonTests1
         public void Differences_between_LilPUmP_LIgpuMp()
         {
             // arrange
-            string Testword1 = "LilPUmP";
-            string Testword2 = "LIgpuMp";
+            string firstTestWord = "LilPUmP";
+            string secondTestWord = "LIgpuMp";
             string resultMustBe = "L[IgpuMp](ilPUmP)";
-            DiffClass diff = new DiffClass();
-            diff.Text1 = Testword1;
-            diff.Text2 = Testword2;
+          
 
             // act
-            string res = diff.GetStringOfDiff();
+            string res = DiffClass.GetStringOfDiff(firstTestWord, secondTestWord);
 
             // assert
             Assert.AreEqual(resultMustBe, res);

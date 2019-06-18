@@ -1,39 +1,20 @@
 ﻿using System.Text;
-using System.IO;
+
 using System;
 
 namespace Comparison
 {
     public class DiffClass
-    {
-        private static Exception ExistException = new Exception("Couldn't find files");
+    { 
         
-        public string Text1 {get; set;}
-        public string Text2 {get; set;}
-      
-        public DiffClass(){ }
-
-        // The constructor gets paths and check existing of files 
-        public DiffClass(string filePath1, string filePath2)
-        {
-            if (File.Exists(filePath1) == false || File.Exists(filePath2) == false)
-                throw ExistException;
-            StreamReader readFile1 = new StreamReader(filePath1, Encoding.Default);
-            StreamReader readFile2 = new StreamReader(filePath2, Encoding.Default);
-            Text1 = readFile1.ReadToEnd();
-            Text2 = readFile2.ReadToEnd();
-        }
-
-        
-
         // Longest common subsequence
-        private int[,] LCS (string text1, string text2)
+        private static int[,] LCS (string firstText, string secondText)
         {
-            int[,] matrixOfLCS = new int[text1.Length + 1, text2.Length + 1];
-            for (int i = 1; i <= text1.Length; i++)
-                for (int j = 1; j <= text2.Length; j++)
+            int[,] matrixOfLCS = new int[firstText.Length + 1, secondText.Length + 1];
+            for (int i = 1; i <= firstText.Length; i++)
+                for (int j = 1; j <= secondText.Length; j++)
                 {
-                    if (text1[i - 1] == text2[j - 1])
+                    if (firstText[i - 1] == secondText[j - 1])
                         matrixOfLCS[i, j] = matrixOfLCS[i - 1, j - 1] + 1;
                     else if (matrixOfLCS[i - 1, j] > matrixOfLCS[i, j - 1])
                         matrixOfLCS[i, j] = matrixOfLCS[i - 1, j];
@@ -44,47 +25,48 @@ namespace Comparison
             return matrixOfLCS;
         }
         
-        // i - lenght of text1; j - length of text2
+        // i - lenght of firstText; j - length of secondText
         // This method returns a string where lost symbols write inside "()" and existed symbols inside "[]"
-        private string Differences (int[,] matrixOfLCS, string text1, string text2, int i, int j)
+        private static string Differences (int[,] matrixOfLCS, string firstText, string secondText, int i, int j)
         {
             var saverDiff = "";
             // EQUAL
-            if (i > 0 && j > 0 && text1[i - 1] == text2[j - 1])
+            if (i > 0 && j > 0 && firstText[i - 1] == secondText[j - 1])
             {
-                saverDiff = Differences(matrixOfLCS, text1, text2, i - 1, j - 1);
-                return saverDiff + text1[i - 1];
+                saverDiff = Differences(matrixOfLCS, firstText, secondText, i - 1, j - 1);
+                return saverDiff + firstText[i - 1];
             }
             // DELETE
             else if (i > 0 && (j == 0 || (matrixOfLCS[i, j - 1] <= matrixOfLCS[i - 1, j])))
             {
-                saverDiff = Differences(matrixOfLCS, text1, text2, i - 1, j);
+                saverDiff = Differences(matrixOfLCS, firstText, secondText, i - 1, j);
                 if (saverDiff.Length != 0 && saverDiff[saverDiff.Length - 1] == ')' )
                     // Cut down previous bracket and add next symbol
-                    return saverDiff.Trim(')') + text1[i - 1] + ")"; 
+                    return saverDiff.Trim(')') + firstText[i - 1] + ")"; 
                 else
-                    return saverDiff + "(" + text1[i - 1] + ")";
+                    return saverDiff + "(" + firstText[i - 1] + ")";
 
             }
             // INSERT
             else if (j > 0 && (i == 0 || (matrixOfLCS[i, j - 1] > matrixOfLCS[i - 1, j])))
             {
 
-                saverDiff = Differences(matrixOfLCS, text1, text2, i, j - 1);
+                saverDiff = Differences(matrixOfLCS, firstText, secondText, i, j - 1);
                 if (saverDiff.Length != 0 && saverDiff[saverDiff.Length - 1] == ']')
                     // Cut down previous bracket and add next symbol
-                    return saverDiff.Trim(']') + text2[j - 1] + "]";
+                    return saverDiff.Trim(']') + secondText[j - 1] + "]";
                 else
-                    return saverDiff + "[" + text2[j - 1] + "]";
+                    return saverDiff + "[" + secondText[j - 1] + "]";
             }
             return saverDiff;
         }
 
         // This method returns the string of Differences between two strings
-        public string GetStringOfDiff()
+        public static string GetStringOfDiff(string firstText, string secondText)
         {
-            if (Text1 != null && Text2 != null)
-                return Differences(LCS(Text1, Text2), Text1, Text2, Text1.Length, Text2.Length);
+            if (firstText != null && secondText != null)
+                return Differences(LCS(firstText, secondText), firstText, 
+                    secondText, firstText.Length, secondText.Length);
             else return ""; 
         }
     }
