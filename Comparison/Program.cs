@@ -13,6 +13,7 @@ namespace FileComparison
             {
                 DiffClass diff = new DiffClass(args[0], args[1]);
                 Console.WriteLine(diff.GetStringOfDiff());
+                Console.ReadLine();
             }
             catch (Exception ex)
             {
